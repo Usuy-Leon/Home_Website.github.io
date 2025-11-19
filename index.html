@@ -51,8 +51,9 @@ body, html {
 }
 
 .ink-line.fade-last {
-  animation: inkAppear var(--fade-duration) ease forwards);
-  animation-delay: 6.5s);
+  animation: inkAppear var(--fade-duration) ease forwards,
+             inkDisappear 12.5s ease forwards var(--cycle);
+  animation-delay: 6.5s, calc(12.5s + var(--fade-duration));
 }
 
 .ink-line.fade-last a {
