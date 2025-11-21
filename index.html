@@ -4,11 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title></title>
+<title>Usuy Leon - Home</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
 
+/* --- CSS Variables for Light Mode --- */
 :root {
   --bg: #ffffff;
   --fg: #0b0b0b;
@@ -16,20 +19,41 @@
   --font-serif: 'Lora', serif;
   --fade-duration: 2.3s;
   --cycle: 120s;
+  
+  /* Backgrounds */
+  --bg-image: url('https://Usuy-Leon.github.io/home.github.io/Imagenes/☀️_dayLight_edition.jpg');
+  --btn-bg: rgba(255,255,255,0.7);
+  --btn-border: rgba(0,0,0,0.12);
+}
+
+/* --- CSS Variables for Dark Mode (Applied via .dark-mode) --- */
+.dark-mode {
+  --bg: #1e1e2f; /* Dark background color */
+  --fg: #e0e0e0; /* Light text color */
+  --muted: #a0a0a0;
+  --bg-image: url('https://Usuy-Leon.github.io/home.github.io/Imagenes/🌙_Dark_mode_edition (1).jpg'); /* Replace with your dark image URL */
+  --btn-bg: rgba(50, 50, 70, 0.7);
+  --btn-border: rgba(255,255,255,0.12);
 }
 
 body, html {
   margin: 0;
   height: 100%;
   width: 100%;
-  background: url('https://Usuy-Leon.github.io/home.github.io/Imagenes/☀️_dayLight_edition.jpg') no-repeat center center fixed;
+  
+  /* Use CSS variables for easy toggling */
+  background: var(--bg-image) no-repeat center center fixed;
   background-size: cover;
   color: var(--fg);
   font-family: var(--font-serif);
+  
   display: flex;
   align-items: center;
   justify-content: center;
   animation: fullReset var(--cycle) linear infinite;
+  
+  /* Added transition for smooth color/background change */
+  transition: background-color 0.5s, color 0.5s;
 }
 
 .wrap {
@@ -37,6 +61,8 @@ body, html {
   padding: 2rem;
   width: min(720px, 94vw);
 }
+
+/* Your existing animation styles... */
 
 .ink-line {
   opacity: 0;
@@ -56,16 +82,51 @@ body, html {
   animation-delay: 6.5s, calc(120s + var(--fade-duration));
 }
 
+/* Apply button styles using variables */
 .ink-line.fade-last a {
-  font-size: 1.1rem; /* Smaller than the text lines */
-  animation: none; /* Disable animation for individual buttons */
+  font-size: 1.1rem; 
+  animation: none; 
+  padding:0.25rem 0.7rem; 
+  border-radius:999px; 
+  border:1px solid var(--btn-border); /* Updated */
+  background:var(--btn-bg); /* Updated */
+  backdrop-filter:blur(10px);
+  text-decoration:none; 
+  font-weight:300; 
+  color:var(--fg); /* Updated */
+  transition: background 0.3s, border-color 0.3s, color 0.3s; /* Smooth button transition */
 }
 
-.ink-line:nth-child(1) { animation-delay: 0s, var(--cycle); }
-.ink-line:nth-child(2) { animation-delay: 1.4s, var(--cycle); }
-.ink-line:nth-child(3) { animation-delay: 3.4s, var(--cycle); }
-.ink-line:nth-child(4) { animation-delay: 4s, var(--cycle); }
+/* Ensure the dark mode button is on a new line and styled */
+.dark-mode-line {
+  display: block; /* Ensures it takes a new line */
+  margin-top: 1.5rem;
+  opacity: 0; /* Inherit animation effect */
+  animation: inkAppear var(--fade-duration) ease forwards;
+  animation-delay: 8.5s; /* Appear after your last line */
+}
 
+#darkModeToggle {
+  /* Style the button */
+  padding:0.25rem 0.7rem; 
+  border-radius:999px; 
+  border:1px solid var(--btn-border);
+  background:var(--btn-bg);
+  backdrop-filter:blur(10px);
+  color:var(--fg);
+  font-size: 1.1rem;
+  font-weight: 300;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+#darkModeToggle:hover {
+    background: var(--fg); /* Invert colors on hover */
+    color: var(--bg);
+}
+
+/* Your existing keyframes */
 @keyframes inkAppear {
   0% { opacity: 0; filter: blur(14px); color:#bfbfbf; transform: translateY(12px); }
   40% { opacity: 0.35; filter: blur(7px); color:#a5a5a5; }
@@ -96,26 +157,67 @@ body, html {
   <div class="ink-line">Here is some of my work.</div>
 
   <div class="ink-line fade-last" style="margin-top:2rem; display:flex; gap:1rem; justify-content:center;">
-      <a href="https://usuy-leon.github.io/cv/"
-         style="padding:0.25rem 0.7rem; border-radius:999px; border:1px solid rgba(0,0,0,0.12);
-         background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
-         text-decoration:none; font-weight:300; color:var(--fg);">
+      <a href="https://usuy-leon.github.io/cv/">
         CV
       </a>
-      <a href="https://github.com/Usuy-Leon"
-         style="padding:0.25rem 0.7rem; border-radius:999px; border:1px solid rgba(0,0,0,0.12);
-         background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
-         text-decoration:none; font-weight:300; color:var(--fg);">
+      <a href="https://github.com/Usuy-Leon">
         GitHub
       </a>
-      <a href="https://usuy-leon.github.io/Usuy-Leon/CV_Leon_En.pdf" 
-         style="padding:0.25rem 0.7rem; border-radius:999px; border:1px solid rgba(0,0,0,0.12);
-         background:rgba(255,255,255,0.7); backdrop-filter:blur(10px);
-         text-decoration:none; font-weight:300; color:var(--fg);">
+      <a href="https://usuy-leon.github.io/Usuy-Leon/CV_Leon_En.pdf"> 
         PDF
       </a>
-   
   </div>
+  
+  <div class="dark-mode-line">
+    <button id="darkModeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i> Dark Mode
+    </button>
+  </div>
+  
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('darkModeToggle');
+    const body = document.body;
+    
+    // Function to set the theme based on the class being present
+    function applyTheme(isDark) {
+        if (isDark) {
+            body.classList.add('dark-mode');
+            toggleButton.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            localStorage.setItem('theme', 'dark');
+        } else {
+            body.classList.remove('dark-mode');
+            toggleButton.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    // 1. Check for saved preference or system preference when the page loads
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark') {
+        applyTheme(true);
+    } else if (savedTheme === 'light') {
+        applyTheme(false);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // Optional: Check system preference if no localStorage value is found
+        applyTheme(true); 
+    } else {
+        // Default to light mode (already set by CSS)
+        applyTheme(false);
+    }
+
+    // 2. Add the click event listener
+    toggleButton.addEventListener('click', () => {
+        const isCurrentlyDark = body.classList.contains('dark-mode');
+        // Toggle the theme
+        applyTheme(!isCurrentlyDark);
+    });
+});
+</script>
+</body>
+</html>
 </body>
 </html>
