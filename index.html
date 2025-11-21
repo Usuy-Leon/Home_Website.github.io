@@ -193,11 +193,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function applyTheme(isDark) {
         if (isDark) {
             body.classList.add('dark-mode');
-            toggleButton.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
             localStorage.setItem('theme', 'dark');
         } else {
             body.classList.remove('dark-mode');
-            toggleButton.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            toggleButton.innerHTML = '<i class="fas fa-moon"></i>';
             localStorage.setItem('theme', 'light');
         }
     }
